@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MatrixOperations
 {
+    /// <summary>
+    /// This class implements some functions for matrices
+    /// </summary>
     class Matrix
     {
         public int[,] Array { get; set; }
@@ -19,6 +22,10 @@ namespace MatrixOperations
             this.Column = column;
         }
 
+        /// <summary>
+        /// Prints the matrix on console
+        /// </summary>
+        /// <param name="matrix"></param>
         public static void Print(Matrix matrix)
         {
             for (int i = 0; i < matrix.Row; i++)
@@ -31,6 +38,10 @@ namespace MatrixOperations
             }
         }
 
+        /// <summary>
+        /// Generates random numbers as matrix elements
+        /// </summary>
+        /// <param name="matrix"></param>
         public static void GenerateMatrix(Matrix matrix)
         {
             var rnd = new Random();
@@ -43,6 +54,12 @@ namespace MatrixOperations
             }
         }
 
+        /// <summary>
+        /// Returns the sum of two matrices
+        /// </summary>
+        /// <param name="matrix1"></param>
+        /// <param name="matrix2"></param>
+        /// <returns></returns>
         public static Matrix Add(Matrix m1, Matrix m2)
         {
             if (m1.Row != m2.Row || m1.Column != m2.Column)
@@ -64,6 +81,12 @@ namespace MatrixOperations
                 return  new Matrix(result, row, column);
         }
 
+        /// <summary>
+        /// Returns the product of two matrices
+        /// </summary>
+        /// <param name="matrix1"></param>
+        /// <param name="matrix2"></param>
+        /// <returns></returns>
         public static Matrix Multiply(Matrix m1, Matrix m2)
         {
             if (m1.Column != m2.Row)
@@ -89,6 +112,12 @@ namespace MatrixOperations
             return new Matrix(result, row, column);
         }
 
+        /// <summary>
+        /// Multiplyes the matric with a scalar
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="scalar"></param>
+        /// <returns></returns>
         public static Matrix ScalarProduct(Matrix m, int s)
         {
                 //Console.WriteLine("\nScalar multiplication of a matrix:");
@@ -105,6 +134,11 @@ namespace MatrixOperations
                 return new Matrix(result, row, column);
         }
 
+        /// <summary>
+        /// returns the transposed matrix for a given matrix
+        /// </summary>
+        /// <param name="m"></param>
+        /// <returns></returns>
         public static Matrix TransposeMatrix(Matrix m)
         {
            // Console.WriteLine("\nTranspose matrix:");
@@ -121,7 +155,12 @@ namespace MatrixOperations
            return new Matrix(result, row, column);
         }
 
-        public static bool IsIdentity(Matrix m)
+        /// <summary>
+        /// Checks is the matrix Identity or no
+        /// </summary>
+        /// <param name="m"></param>
+        /// <returns></returns>
+        private static bool IsIdentity(Matrix m)
         {
             int row = m.Row;
             int column = m.Column;
@@ -148,6 +187,13 @@ namespace MatrixOperations
             return true;
         }
 
+        /// <summary>
+        /// Checks is the matrix Identity or no 
+        /// "if the product of matrix and transposed matrix 
+        /// equals identity matrix then yes  "
+        /// </summary>
+        /// <param name="m"></param>
+        /// <returns></returns>
         public static bool IsOrthogonal(Matrix m)
         {
             Matrix product = Multiply(m, TransposeMatrix(m));
@@ -156,6 +202,11 @@ namespace MatrixOperations
             return false;
         }
 
+        /// <summary>
+        /// returns the max element of matrix
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <returns></returns>
         public static int MaxElement(Matrix matrix)
         {
             int max = matrix.Array[0, 0];
@@ -170,6 +221,11 @@ namespace MatrixOperations
             return max;
         }
 
+        /// <summary>
+        /// returns the min element of matrix
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <returns></returns>
         public static int MinElement(Matrix matrix)
         {
             int min = matrix.Array[0, 0];
@@ -182,6 +238,14 @@ namespace MatrixOperations
                 }
             }
             return min;
+        }
+
+        public static double Determinant(Matrix m, int n)
+        {
+            double det = 0;
+            int[,] subArray = new int[n, n];
+            subArray  = m.Array;
+
         }
     }
 }
