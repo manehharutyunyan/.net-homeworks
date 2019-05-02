@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace MatrixOperations
 {
+
     class Program
     {
+
         static void Main(string[] args)
         {
             //int[,] a = { { 1, 2, 3 }, { 4, 5, 6 } };//, { 7, 8, 9 } };
@@ -33,7 +35,7 @@ namespace MatrixOperations
             //Matrix.Multiply(A, B);
             //Matrix.ScalarProduct(A, 10);
             //Matrix.TransposeMatrix(A);
-            Console.WriteLine(Matrix.IsOrthogonal(A));
+            ///Console.WriteLine(Matrix.IsOrthogonal(A));
             //Console.WriteLine(Matrix.IsIdentity(I));
         }
     }

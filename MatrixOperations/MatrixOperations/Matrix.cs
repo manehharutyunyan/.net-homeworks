@@ -240,12 +240,20 @@ namespace MatrixOperations
             return min;
         }
 
-        public static double Determinant(Matrix m, int n)
+        public static double Determinant(Matrix matrix, int n)
         {
             double det = 0;
             int[,] subArray = new int[n, n];
-            subArray  = m.Array;
+            subArray  = matrix.Array;
 
+            if (n == 2)
+            {
+                return ((matrix.Array[0, 0] * matrix.Array[1, 1]) - (matrix.Array[1, 0] * matrix.Array[0, 1]));
+            }
+            else
+            {
+
+            }
         }
     }
 }
