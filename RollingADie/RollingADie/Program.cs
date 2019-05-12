@@ -6,6 +6,9 @@ namespace RollingADie
     {
         static void Main(string[] args)
         {
+
+
+
             RollingADie rollingDie = new RollingADie();
             rollingDie.OnTwoFoursInRAow += RollingDie_OnTwoFoursInRAow;
             rollingDie.OnSumOfFiveTosses += RollingDie_OnSumOfFiveTosses;

@@ -7,9 +7,13 @@ namespace RollingADie
     /// </summary>
     class RollingADie
     {
+        //Event which is triggered if die showstwo foursin a row
+        //and count the number of times ‘two foursin a row’appear.
         public delegate void TwoFoursInRAowDelegae(int Count);
         public event TwoFoursInRAowDelegae OnTwoFoursInRAow;
 
+        //Event which is triggered if in the consequent 5tosses the
+        //sum of all numbers is greater than or equal to 20.
         public delegate void SumOfFiveTossesDelegae();
         public event SumOfFiveTossesDelegae OnSumOfFiveTosses;
 
@@ -59,15 +63,11 @@ namespace RollingADie
                 sum += rollinDieArr[i];
             }
 
-            //Event which is triggered if die showstwo foursin a row
-            //and count the number of times ‘two foursin a row’appear.
             if (this.OnTwoFoursInRAow != null)
             {
                 this.OnTwoFoursInRAow(count);
             }
-
-            //Event which is triggered if in the consequent 5tosses the
-            //sum of all numbers is greater than or equal to 20.
+            
             if (this.OnSumOfFiveTosses != null && isSumGreatherThan20 == true)
             {
                 this.OnSumOfFiveTosses();
