@@ -27,10 +27,10 @@ namespace Threads
         static void Main(string[] args)
         {
 
-           // Action<int> body;
+            Action<object> body = SayHello;
 
 
-            WaitCallback callback = new WaitCallback(SayHello);
+            WaitCallback callback = new WaitCallback(body);
             // body(9);
 
             // System.Threading.WaitCallback(object state);
@@ -39,10 +39,6 @@ namespace Threads
             {
                 ThreadPool.QueueUserWorkItem(callback, i);
             }
-
-            // Console.WriteLine("Main done");
-            //Thread.Sleep(5);
-            // Console.ReadLine();
         }
 
         private static void SayHello(object arg)
