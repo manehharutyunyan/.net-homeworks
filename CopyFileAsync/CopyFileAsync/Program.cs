@@ -58,13 +58,11 @@ namespace CopyFileAsync
                 byte[] buffer = new byte[5000];
                 fileSize = stream.Length;
 
-                int numBytesToRead = (int)stream.Length;
                 do
                 {
-                    numBytesToRead -= readedBytes;
                     await ReadFromFile(buffer, 0, 1, stream).ConfigureAwait(false);
                     await WriteToFile(buffer, 0, 1, writeStream).ConfigureAwait(false);
-                } while (numBytesToRead > 0);
+                } while (stream.Position != stream.Length);
             }
         }
 
@@ -78,7 +76,7 @@ namespace CopyFileAsync
             string copypath = Path.Combine(path, copyFile);
 
             CopyFile(sourcepath, copypath);
-            while (fileSize != countOfReadedBytes)
+            while (countOfReadedBytes <= fileSize)
             {
                  Console.WriteLine(countOfReadedBytes * 100 / fileSize + "%");
             }
