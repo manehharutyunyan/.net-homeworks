@@ -78,7 +78,12 @@ namespace CopyFileAsync
             CopyFile(sourcepath, copypath);
             while (countOfReadedBytes <= fileSize)
             {
-                 Console.WriteLine(countOfReadedBytes * 100 / fileSize + "%");
+                long currPrice = countOfReadedBytes * 100 / fileSize;
+                 Console.WriteLine(currPrice + "%");
+                if (currPrice == 100)
+                {
+                    return;
+                }
             }
         }
     }
